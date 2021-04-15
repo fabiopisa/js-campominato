@@ -29,6 +29,7 @@ while(vittoriaSconfitta === false){
     alert("ATTENZIONE! il numero è già statoinserito");
   }else if(arrBombeCpu.includes(numeri_utente) === true){
     alert("HAI PERSO!\nHai trvato una bomba il tuo gioco è finito!");
+    console.log("HAI PERSO!")
     console.log("Hai fatto n." + (arrNumeriGiocatore.length + 1) + " tentativi \nIl numero bomba trovato è " + numeri_utente + "\nIl tuo punteggio è " + (arrNumeriGiocatore.length * punti_numero));
     vittoriaSconfitta = true;
   }else if(numeri_utente > limite){
@@ -50,11 +51,15 @@ while(vittoriaSconfitta === false){
 function generatore_bombe (num, max){
   var arrbombe = [];
   while(arrbombe.length < num){
-   var gen_bombe = Math.floor(Math.random()*max + 1) ;
+   var gen_bombe = random(max) ;
    if(arrbombe.includes(gen_bombe) === false){
     arrbombe.push(gen_bombe);
    }
   }
   return arrbombe;
+}
+
+function random (max){
+  return Math.ceil(Math.random() * max);
 }
 
