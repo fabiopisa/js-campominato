@@ -11,7 +11,8 @@ all’inizio il software richiede anche una difficoltà all’utente che cambia 
 con difficoltà 0 => tra 1 e 100
 con difficoltà 1 => tra 1 e 80
 con difficoltà 2 => tra 1 e 50 */
-var limite = 100;
+var numero_limite;
+var limite = difficolta(numero_limite);
 var numeri_bomba = 16;
 var tentativi = limite - numeri_bomba;
 var arrNumeriGiocatore = [];
@@ -33,7 +34,7 @@ while(vittoriaSconfitta === false){
     console.log("Hai fatto n." + (arrNumeriGiocatore.length + 1) + " tentativi \nIl numero bomba trovato è " + numeri_utente + "\nIl tuo punteggio è " + (arrNumeriGiocatore.length * punti_numero));
     vittoriaSconfitta = true;
   }else if(numeri_utente > limite){
-    alert("ATTENZIONE! il numero inserito è supoeriore a 100");
+    alert("ATTENZIONE! il numero inserito è supoeriore al numero limite");
   }else if(numeri_utente < 1){
     alert("ATTENZONE! il numero inserito è minore di 1");
   }else if(isNaN(numeri_utente) === true){
@@ -44,6 +45,25 @@ while(vittoriaSconfitta === false){
       alert("HAI VINTO!!!");
       console.log((arrNumeriGiocatore.length* punti_numero) + " è il tuo punteggio")
       vittoriaSconfitta = true;
+    }
+  }
+}
+
+
+//FUNZIONI
+function difficolta (num_limit){
+  var richiesta = prompt("scegli la difficoltà facile, media ,difficile");
+
+  while(richiesta == "facile" || richiesta =="media" || richiesta == "difficile"){
+    
+    if(richiesta == "facile"){
+      return num_limit= 100;
+    }else if (richiesta == "media"){
+      return num_limit= 80;
+    }else if(richiesta == "difficile"){
+      return num_limit= 50
+    }else{
+      alert("ATTENZIONE! Non hai inserito correttamente la difficoltà")
     }
   }
 }
